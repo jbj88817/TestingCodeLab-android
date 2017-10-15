@@ -16,9 +16,9 @@
 
 package us.bojie.testingcodelab_android.data;
 
-import com.google.common.base.Objects;
-
 import android.support.annotation.Nullable;
+
+import com.google.common.base.Objects;
 
 import java.util.UUID;
 
@@ -72,8 +72,12 @@ public final class Note {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Note note = (Note) o;
         return Objects.equal(mId, note.mId) &&
                 Objects.equal(mTitle, note.mTitle) &&

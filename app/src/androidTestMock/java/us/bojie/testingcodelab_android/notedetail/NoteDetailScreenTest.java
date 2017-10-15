@@ -7,6 +7,7 @@ import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -99,5 +100,14 @@ public class NoteDetailScreenTest {
         onView(withId(R.id.note_detail_image)).check(matches(allOf(
                 hasDrawable(),
                 isDisplayed())));
+    }
+
+    /**
+     * Unregister your Idling Resource so it can be garbage collected and does not leak any memory.
+     */
+    @After
+    public void unregisterIdlingResource() {
+        IdlingRegistry.getInstance().unregister(
+                mNoteDetailActivityTestRule.getActivity().getCountingIdlingResource());
     }
 }
